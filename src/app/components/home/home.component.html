@@ -1,0 +1,42 @@
+<div>
+    <app-header></app-header>
+    <div class="main-content">
+        <div class="header-content">
+            <div class="add-detail-text">
+                AddressBook Details
+            </div>
+            <a routerLink="/addressBook-form" class="add-button">
+                <img src="../../../assets/icons/add-24px.svg" alt="">Add User
+            </a>
+        </div>
+        <div class="table-main">
+            <table id="display" class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>PhoneNumber</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let addressBook of addressBookList">
+                        <td>{{addressBook.name}}</td>
+                        <td>{{addressBook.address}}</td>
+                        <td>{{addressBook.city}}</td>
+                        <td>{{addressBook.state}}</td>
+                        <td>{{addressBook.zipCode}}</td>
+                        <td>{{addressBook.phoneNumber}}</td>
+                        <td>
+                            <img id="{{addressBook.addressBookId}}" (click)="deleteUser(addressBook.addressBookId)" alt=" delete " src="../assets/icons/delete-black-18dp.svg ">
+                            <img id="{{addressBook.addressBookId}}" (click)="update(addressBook.addressBookId)" alt="edit " src="../assets/icons/create-black-18dp.svg ">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
