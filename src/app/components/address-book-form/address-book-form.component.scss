@@ -45,9 +45,9 @@
     .row-content {
         display: flex;
         flex-flow: column;
-        margin-bottom: 15px;
+        margin: 5px 0px;
         align-content: flex-start;
-        padding: 10px 130px;
+        padding: 15px 130px;
     }
     
     .label {
@@ -88,21 +88,23 @@
         color: #42515f;
         background-color: transparent;
         resize: vertical;
-        width: 120px;
+        width: 145px;
         margin-top: 5px;
     }
     
-    .error {
+    .text-error {
         font-size: 14px;
         color: red;
         opacity: 1;
         font-family: Roboto;
-        padding-left: 140px;
+        padding-left: 130px;
         margin-bottom: 10px;
+        text-align: left;
     }
     
     .buttonParent {
         display: flex;
+        margin-top: 20px;
         margin-bottom: 20px;
         flex-direction: row;
     }
@@ -118,20 +120,31 @@
         font-weight: 40%;
         min-width: 130px;
         padding: 7px 7px;
-        border: 1px solid grey;
+        border: 1px solid rgb(204, 14, 14);
         cursor: pointer;
+        border-radius: 5px;
+    }
+    
+    .submitButton:hover {
+        background-color: #008cff;
+        color: white;
+    }
+    
+    .resetButton:hover {
+        background-color: #5b5f63;
+        color: white;
     }
     
     .submitButton {
         border: none;
-        border: 1px solid grey;
-        margin-left: 250px;
+        border: 1px solid gray;
+        margin-left: 350px;
     }
     
     .resetButton {
         border: none;
         border: 1px solid grey;
-        margin-left: 60px;
+        margin-left: 30px;
     }
     
     @media only screen and (max-width: 960px) {

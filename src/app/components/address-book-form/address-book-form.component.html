@@ -6,19 +6,22 @@
                 <div class="form-head-text">Person Address Form</div>
                 <a href="../pages/home.html"><img class="cancel-img" src="../assets/images/cancel.jpeg" alt="cancel"></a>
             </div>
+
+            <span class="text-error">{{ this.errorText }}</span>
             <div class="row-content">
-                <label class="label text" for="name">Name</label>
-                <input class="input" type="text" id="name" name="name" placeholder="Your name.." required [(ngModel)]="addressBookObj.name" [ngModelOptions]="{standalone: true}">
+                <label class="label text" for="name">Full Name</label>
+                <input class="input" (input)="onNameChange()" type="text" id="name" name="name" [(ngModel)]="addressBookObj.name" [ngModelOptions]="{standalone: true}" required>
             </div>
-            <div class=" error " *ngIf="addressBookForm.controls[ 'name'].invalid && addressBookForm.controls[ 'name'].touched ">
-                {{ getErrorMessage(addressBookForm.controls['name'], 'name') }} </div>
+
+            <div class="row-content ">
+                <label class="label text " for="phoneNumber ">Phone Number</label>
+                <input class="input " (input)="onPhoneNumberChange()" id="phoneNumber " name="phoneNumber " type="text " required [(ngModel)]="addressBookObj.phoneNumber " [ngModelOptions]="{standalone: true} ">
+            </div>
 
             <div class="row-content ">
                 <label class="label text " for="address ">Address</label>
-                <textarea class="input " id="address " name="address " placeholder=" " style="height: 50px; " [(ngModel)]="addressBookObj.address " [ngModelOptions]="{standalone: true} "> </textarea>
+                <textarea class="input " (input)="onAddressChange()" id="address " name="address " placeholder=" " style="height: 50px; " [(ngModel)]="addressBookObj.address " [ngModelOptions]="{standalone: true} "> </textarea>
             </div>
-            <div class="error " *ngIf="addressBookForm.controls[ 'address'].invalid && addressBookForm.controls[ 'address'].touched ">
-                {{ getErrorMessage(addressBookForm.controls['address'], 'address') }} </div>
 
             <div class="select-box ">
                 <div>
@@ -32,8 +35,8 @@
                         <option value="Delhi ">Delhi</option>
                     </select>
                 </div>
-                <div class="error " *ngIf="addressBookForm.controls[ 'city'].invalid && addressBookForm.controls[ 'city'].touched ">
-                    {{ getErrorMessage(addressBookForm.controls['city'], 'city') }} </div>
+                <!-- <div class="error " *ngIf="addressBookForm.controls[ 'city'].invalid && addressBookForm.controls[ 'city'].touched ">
+                    {{ getErrorMessage(addressBookForm.controls['city'], 'city') }} </div> -->
 
                 <div>
                     <label for="state " class="label text ">State</label>
@@ -45,22 +48,16 @@
                         <option value="Mangalore ">Mangalore</option>
                     </select>
                 </div>
-                <div class="error " *ngIf="addressBookForm.controls[ 'state'].invalid && addressBookForm.controls[ 'state'].touched ">
-                    {{ getErrorMessage(addressBookForm.controls['state'], 'state') }} </div>
+                <!-- <div class="error " *ngIf="addressBookForm.controls[ 'state'].invalid && addressBookForm.controls[ 'state'].touched ">
+                    {{ getErrorMessage(addressBookForm.controls['state'], 'state') }} </div> -->
 
                 <div class="zip ">
                     <label for="zipCode " class="label text ">Zip Code</label>
                     <input class="select " type="number " name="zipCode " id="zipCode " required [(ngModel)]="addressBookObj.zipCode " [ngModelOptions]="{standalone: true} ">
                 </div>
-                <div class="error " *ngIf="addressBookForm.controls[ 'zipCode'].invalid && addressBookForm.controls[ 'zipCode'].touched ">
-                    {{ getErrorMessage(addressBookForm.controls['zipCode'], 'zipCode') }} </div>
+                <!-- <div class="error " *ngIf="addressBookForm.controls[ 'zipCode'].invalid && addressBookForm.controls[ 'zipCode'].touched ">
+                    {{ getErrorMessage(addressBookForm.controls['zipCode'], 'zipCode') }} </div> -->
             </div>
-            <div class="row-content ">
-                <label class="label text " for="phoneNumber ">Phone Number</label>
-                <input class="input " id="phoneNumber " name="phoneNumber " type="text " required [(ngModel)]="addressBookObj.phoneNumber " [ngModelOptions]="{standalone: true} ">
-            </div>
-            <div class="error " *ngIf="addressBookForm.controls[ 'phoneNumber'].invalid && addressBookForm.controls[ 'phoneNumber'].touched ">
-                {{ getErrorMessage(addressBookForm.controls['phoneNumber'], 'phoneNumber') }} </div>
 
             <div class="buttonParent ">
                 <div class="submit-reset ">

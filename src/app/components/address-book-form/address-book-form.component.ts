@@ -13,6 +13,7 @@ export class AddressBookFormComponent implements OnInit {
  
   addressBookObj: AddressBookData = new AddressBookData();
 
+  errorText: string;
   addressBookForm: any;
   addessBookId: any;
   isUpdate = false;
@@ -41,26 +42,34 @@ export class AddressBookFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  getErrorMessage(control: FormControl, message: string) {
-    if (control.errors) {
-      if (control.errors.required) {
-        return message + ' is required';
-      }
-
-      if (control.errors.pattern || control.errors.whitespace) {
-        return 'Invalid ' + message.toLowerCase();
-      }
+  onNameChange() {
+  //  console.log("Printing"+this.addressBookObj.name);
+    let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+    if (nameRegex.test(this.addressBookObj.name)){
+        this.errorText = "";
+    //  console.log("Success"+this.addressBookObj.name+"Yeah..");
+    } else {
+        this.errorText = 'Name is incorrect';
+      //  console.log("fail"+this.addressBookObj.name+"..");
     }
   }
 
-  private markFormGroupTouched(formGroup: FormGroup) {
-    (<any>Object).values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-      if (control.controls) {
-        this.markFormGroupTouched(control);
-      }
-    });
+  onPhoneNumberChange() {
+    const phoneNumberRegex = RegExp('^[9][1][ ][6-9][0-9]{9}$');
+    if (phoneNumberRegex.test(this.addressBookObj.phoneNumber))
+        this.errorText = '';
+    else
+        this.errorText = 'PhoneNo is invalid.'
   }
+
+  onAddressChange(){
+    const addressRegex = RegExp('^([A-Za-z0-9/,-]{3,}[ ]?)+$');
+    if (addressRegex.test(this.addressBookObj.address))
+        this.errorText = '';
+    else
+        this.errorText = 'Adddress is invalid.'
+  }
+
   getDataById(id): void {
     this.addressBookService.getAddressBookById(id).subscribe(respose => {
     this.setDataToFormBuilder(respose.data);
@@ -79,6 +88,7 @@ export class AddressBookFormComponent implements OnInit {
     this.addressBookObj.addressBookId=object.addressBookId,
     console.log(object);
   }
+
   onSubmit() {
     console.log("save");
 
@@ -96,7 +106,7 @@ export class AddressBookFormComponent implements OnInit {
         this.router.navigateByUrl('');
       }, err => {
       })
-    }
+    } 
   }
 
   reset(): void {

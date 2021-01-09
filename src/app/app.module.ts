@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AddressBookFormComponent } from './components/address-book-form/address-book-form.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddressBookService } from './services/address-book.service';
 
 @NgModule({
   declarations: [
