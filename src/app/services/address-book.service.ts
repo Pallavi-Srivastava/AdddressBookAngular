@@ -8,7 +8,7 @@ import { AddressBookData } from './../models/address-book-data';
   providedIn: 'root'
 })
 export class AddressBookService {
-  private getUrl: string = "http://localhost:7038/addressBook";
+  private getUrl: string = "http://3.19.75.43/:7038/addressBook";
 
   constructor(private _httpClient: HttpClient) { }
 
